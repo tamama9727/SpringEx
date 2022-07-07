@@ -7,7 +7,7 @@ public class UsedGoods {
 	private int id;
 	private String title;
 	private int price;
-	private String dscription;
+	private String description;
 	private String picture;
 	private int sellerId;
 	private	Date createdAt;
@@ -31,10 +31,10 @@ public class UsedGoods {
 		this.price = price;
 	}
 	public String getDscription() {
-		return dscription;
+		return description;
 	}
 	public void setDscription(String dscription) {
-		this.dscription = dscription;
+		this.description = dscription;
 	}
 	public String getPicture() {
 		return picture;

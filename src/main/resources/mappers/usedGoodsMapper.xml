@@ -7,13 +7,11 @@
  		<select id="selectUsedGoodsList" resultType="com.gunn.ex.database.model.UsedGoods">
  			SELECT
  			`id`
-            , `lectureId`
-            , `lectureListId`
-            , `order`
-            , `subject`
-            , `userId`
-            , `author`
-            , `filePath`
+            , `sellerId`
+            , `title`
+            , `price`
+            , `description`
+            , `picture`
             , `createdAt`
             , `updatedAt`
         FROM

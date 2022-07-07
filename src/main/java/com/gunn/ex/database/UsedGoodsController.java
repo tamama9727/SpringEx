@@ -13,7 +13,7 @@ import com.gunn.ex.database.model.UsedGoods;
 @Controller
 public class UsedGoodsController {
 
-	@Autowired
+	@Autowired	
 	private UsedGoodsBO usedGoodsBO;
 	
 	//used goods 안에 있는 모든 내용을 json 으로 전달한다.
