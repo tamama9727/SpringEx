@@ -1,6 +1,7 @@
 package com.gunn.ex.jstl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -47,6 +48,15 @@ public class JSTLController {
 		model.addAttribute("userList" , userList);
 		
 		return"jstl/ex02";
+	}
+	
+	@GetMapping("/jstl/ex03")
+	public String ex03(Model model) {
+		
+		Date now = new Date();
+		model.addAttribute("now", now);
+		
+		return"jstl/ex03";
 	}
 	
 }
