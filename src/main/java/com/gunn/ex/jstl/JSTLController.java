@@ -59,4 +59,13 @@ public class JSTLController {
 		return"jstl/ex03";
 	}
 	
+	@GetMapping("/jstl/ex04")
+	public String ex04(Model model) {
+		
+		Date now = new Date();
+		model.addAttribute("now", now);
+		
+		return"jstl/ex04";
+	}
+	
 }
