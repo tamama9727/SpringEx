@@ -1,6 +1,8 @@
 package com.gunn.ex.ajax;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gunn.ex.ajax.bo.NewUserBO;
 import com.gunn.ex.ajax.model.NewUser;
@@ -32,8 +35,9 @@ public class NewUserController {
 	}
 	
 	@PostMapping("/insert")
+	@ResponseBody
 	//이름 생년월일 자기소개 이메일 전달 받고 저장
-	public String addUser(
+	public Map<String ,String> addUser(
 			@RequestParam("name") String name
 			,@RequestParam("yyyymmdd") String yyyymmdd
 			,@RequestParam("introduce") String introduce
@@ -42,7 +46,24 @@ public class NewUserController {
 		
 		int count = newUserBO.addUser(name, yyyymmdd, introduce, email);
 		
-		return "삽입결과 : " + count;
+		//리스펀스에 올바른 정보를 주기위해서
+		Map<String, String> result = new HashMap<>();
+		
+		//{"result":"success"}
+		if(count == 1) {
+			//정상상태
+			//{"result":"success"}
+			result.put("result", "success");
+			
+			
+		}else{
+			//비 정상상태
+			//{"result":"fail"}
+			result.put("result", "fail");
+		}
+		
+		return result;
+		//return "삽입결과 : " + count;
 	}
 	
 	@GetMapping("/input")
