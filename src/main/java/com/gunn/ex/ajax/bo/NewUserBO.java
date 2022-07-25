@@ -24,4 +24,15 @@ public class NewUserBO {
 		return newUserDAO.insertUser(name, yyyymmdd, introducec, email);
 		
 	}
+	
+	public boolean isDuplicateName(String name){
+		
+		int count = newUserDAO.selectCountByName(name);
+		
+		if(count == 0) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 }

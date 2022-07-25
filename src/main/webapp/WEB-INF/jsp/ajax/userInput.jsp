@@ -9,7 +9,7 @@
 </head>
 <body>
 	<%-- <form method = "post" action = "/ajax/user/insert">--%>
-		<label>이름</label> <input type = "text" name = "name" id = "nameInput"><br>
+		<label>이름</label> <input type = "text" name = "name" id = "nameInput"><button id="duplicateBtn" type = "button">중복확인</button><br>
 		<label>생년월일</label> <input type = "text" name = "yyyymmdd" id = "yyyymmddInput"><br>
 		<label>자기소개</label><br>
 		<textarea rows = "5" cols = "30" name = "introduce" id = "introduceInput"></textarea><br>
@@ -18,6 +18,32 @@
 	
 	<script>
 		$(document).ready(function(){
+			
+			$("#duplicateBtn").on("click",function(){
+				//이름 인풋에 입력한 이름이 중복인지 확인
+				let name = $("#nameInput").val();
+				if(name == ""){
+					alert("이름을 입력하세요");
+					return false;
+				}
+				
+				$.ajax({
+					type:"get",
+					url:"/ajax/user/is_duplicate",
+					data:{"name":name},
+					success:function(data){
+						if(data.is_duplicate){
+							alert("중복된 이름 입니다");
+						}else{
+							alert("사용가능한 이릅입니다.");
+						}
+					},
+					error:function(){
+						alert("에러발생");
+					}
+				});
+				
+			});
 			
 			$("#addBtn").on("click" , function(){
 				

@@ -71,4 +71,23 @@ public class NewUserController {
 		
 		return "ajax/userInput";
 	}
+	
+	@GetMapping("/is_duplicate")
+	@ResponseBody
+	public Map<String , Boolean> isDuplicate(@RequestParam("name") String name) {
+		
+		Map<String , Boolean> result = new HashMap<>();
+		
+		if(newUserBO.isDuplicateName(name)) {
+			result.put("is_dupilcate", true);
+		}else {
+			result.put("is_dupilcate", false);
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
 }
